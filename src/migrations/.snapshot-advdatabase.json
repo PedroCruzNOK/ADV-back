@@ -16,6 +16,15 @@
           "default": "uuid_generate_v4()",
           "mappedType": "uuid"
         },
+        "usuario": {
+          "name": "usuario",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        },
         "nombre": {
           "name": "nombre",
           "type": "varchar(255)",
@@ -43,6 +52,144 @@
           "nullable": false,
           "mappedType": "string"
         },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        }
+      },
+      "name": "usuario",
+      "schema": "public",
+      "indexes": [
+        {
+          "keyName": "usuario_pkey",
+          "columnNames": [
+            "uuid"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {}
+    },
+    {
+      "columns": {
+        "uuid": {
+          "name": "uuid",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "uuid_generate_v4()",
+          "mappedType": "uuid"
+        },
+        "direccion": {
+          "name": "direccion",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        },
+        "encargado_uuid": {
+          "name": "encargado_uuid",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "uuid"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        }
+      },
+      "name": "dependencia",
+      "schema": "public",
+      "indexes": [
+        {
+          "keyName": "dependencia_pkey",
+          "columnNames": [
+            "uuid"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "dependencia_encargado_uuid_foreign": {
+          "constraintName": "dependencia_encargado_uuid_foreign",
+          "columnNames": [
+            "encargado_uuid"
+          ],
+          "localTableName": "public.dependencia",
+          "referencedColumnNames": [
+            "uuid"
+          ],
+          "referencedTableName": "public.usuario",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "uuid": {
+          "name": "uuid",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "uuid_generate_v4()",
+          "mappedType": "uuid"
+        },
+        "usuario_uuid": {
+          "name": "usuario_uuid",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "uuid"
+        },
         "fechaingreso": {
           "name": "fechaingreso",
           "type": "timestamptz(0)",
@@ -52,6 +199,15 @@
           "nullable": false,
           "length": 6,
           "mappedType": "datetime"
+        },
+        "dependencia_uuid": {
+          "name": "dependencia_uuid",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "uuid"
         },
         "created_at": {
           "name": "created_at",
@@ -88,7 +244,32 @@
         }
       ],
       "checks": [],
-      "foreignKeys": {}
+      "foreignKeys": {
+        "empleado_usuario_uuid_foreign": {
+          "constraintName": "empleado_usuario_uuid_foreign",
+          "columnNames": [
+            "usuario_uuid"
+          ],
+          "localTableName": "public.empleado",
+          "referencedColumnNames": [
+            "uuid"
+          ],
+          "referencedTableName": "public.usuario",
+          "updateRule": "cascade"
+        },
+        "empleado_dependencia_uuid_foreign": {
+          "constraintName": "empleado_dependencia_uuid_foreign",
+          "columnNames": [
+            "dependencia_uuid"
+          ],
+          "localTableName": "public.empleado",
+          "referencedColumnNames": [
+            "uuid"
+          ],
+          "referencedTableName": "public.dependencia",
+          "updateRule": "cascade"
+        }
+      }
     },
     {
       "columns": {

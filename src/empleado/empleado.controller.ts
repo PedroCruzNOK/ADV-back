@@ -13,7 +13,7 @@ export class EmpleadoController {
     async find(){
         
         return await this.em.find(Empleado, {}, {
-            populate: [], 
+            populate: ['usuario','dependencia','vacacion'], 
             strategy: LoadStrategy.JOINED,
             lockMode: LockMode.NONE,
             lockTableAliases: ['e0'],
@@ -33,13 +33,13 @@ export class EmpleadoController {
 
     @Post()
     async create(@Body() body: any) {
-        if (!body.nombre) {
+        if (!body.fechaIngreso) {
         throw new HttpException('No se pudo crear el empleado', HttpStatus.BAD_REQUEST);
         }
         const em = this.em.fork();
         await em.begin();  
     try {
-        const empleado = new Empleado(body.nombre, body.apellidoPaterno, body.apellidoMaterno, body.fechaIngreso);
+        const empleado = new Empleado(body.usuario, body.fechaIngreso, body.dependencia);
         await this.empleadoRepository.persistAndFlush(empleado);
         return empleado;
         } 

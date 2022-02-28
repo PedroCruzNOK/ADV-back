@@ -4,6 +4,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { EmpleadoModule } from './empleado/empleado.module';
 import { VacacionModule } from './vacacion/vacacion.module';
+import { DependenciaModule } from './dependencia/dependencia.module';
+import { UsuarioModule } from './usuario/usuario.module';
 
 @Module({
   imports: [
@@ -12,6 +14,8 @@ import { VacacionModule } from './vacacion/vacacion.module';
     }),
     EmpleadoModule,
     VacacionModule,
+    DependenciaModule,
+    UsuarioModule,
     
 
   ],
