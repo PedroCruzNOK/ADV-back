@@ -25,6 +25,15 @@
           "nullable": false,
           "mappedType": "string"
         },
+        "password": {
+          "name": "password",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        },
         "nombre": {
           "name": "nombre",
           "type": "varchar(255)",

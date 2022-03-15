@@ -13,6 +13,10 @@ export class Usuario{
     @Property({ concurrencyCheck: true })
     usuario: string;
 
+    
+    @Property({ concurrencyCheck: true })
+    password: string;
+
     @Property({ concurrencyCheck: true })
     nombre: string;
 
@@ -34,8 +38,9 @@ export class Usuario{
     @Property({ onUpdate : () =>  new Date() })
     updatedAt = new Date();
 
-    constructor(usuario: string, nombre: string, apellidoPaterno: string, apellidoMaterno: string) {
+    constructor(usuario: string, password: string,nombre: string, apellidoPaterno: string, apellidoMaterno: string) {
         this.usuario = usuario;
+        this.password = password;
         this.nombre = nombre;
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;

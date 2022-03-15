@@ -6,6 +6,7 @@ import { EmpleadoModule } from './empleado/empleado.module';
 import { VacacionModule } from './vacacion/vacacion.module';
 import { DependenciaModule } from './dependencia/dependencia.module';
 import { UsuarioModule } from './usuario/usuario.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { UsuarioModule } from './usuario/usuario.module';
     VacacionModule,
     DependenciaModule,
     UsuarioModule,
+    AuthModule,
     
 
   ],
